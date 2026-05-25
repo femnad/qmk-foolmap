@@ -1,6 +1,10 @@
 custom_keys:
   - clear
 
+header_definitions:
+  oneshot_tap_toggle: 2
+  oneshot_timeout: 5000
+
 custom_definitions:
   diag_b: mt(mod_rsft, kc_b)
   diag_x: mt(mod_lsft, kc_x)
