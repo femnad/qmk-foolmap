@@ -3,11 +3,11 @@
 Compile:
 
 ```
-qmk compile -kb preonic/rev3 -km foolmap
+qmk compile -kb preonic/rev3_drop -km foolmap
 ```
 
 Flash:
 
 ```
-qmk flash -kb preonic/rev3 -km foolmap
+qmk flash -kb preonic/rev3_drop -km foolmap
 ```
