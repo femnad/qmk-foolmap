@@ -1,12 +1,13 @@
 # Forgot How to Flash Again?
 
-```
-make preonic/rev3_drop:foolmap
-teensy_loader_cli -mmcu=atmega32u4 -w preonic_foolmap.hex
-```
-
-or
+Compile:
 
 ```
-make preonic/rev3_drop:foolmap:flash
+qmk compile -kb preonic/rev3 -km foolmap
+```
+
+Flash:
+
+```
+qmk flash -kb preonic/rev3 -km foolmap
 ```
