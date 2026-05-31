@@ -125,6 +125,35 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_preoni
     'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
     '*', '*', '*', '*', '*', '*',  '*', '*', '*', '*', '*', '*'
 );
+
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t* other_record) {
+    // If the keys are on the same hand, we never want a hold.
+    if (chordal_hold_handedness(tap_hold_record->event.key) == chordal_hold_handedness(other_record->event.key)) {
+        return false;
+    }
+    // Otherwise, use the standard handedness rule for opposite hands.
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case DIAG_B:
+        case DIAG_X:
+        case HOME_E:
+        case HOME_U:
+        case HOME_H:
+        case HOME_T:
+        case HOME_N:
+        case HOME_O:
+        case INDX_I:
+        case INDX_D:
+        case INDX_D:
+            return 350;
+        default:
+            return TAPPING_TERM;
+    }
+}
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
